@@ -3,7 +3,11 @@
 <div class="media">
   <div class="media-body">
     <h4 class="media-heading">
-      <%= link_to post.title, post %>
+      <% if post.id % 5 == 0 %>
+        SPAM
+        <% else %>
+          <%= link_to post.title, post %>
+        <% end %>
     </h4>
   </div>
 </div>
