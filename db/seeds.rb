@@ -7,6 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'random_data'
 
+
+
+
 50.times do
   # ! raises error if there is problem w/ data
   Post.create!(
@@ -25,6 +28,11 @@ posts = Post.all
     body: RandomData.random_paragraph
   )
 end
+
+puts "#{Post.count} before"
+Post.find_or_create_by(title: "Rem", body: "i'm the body of rem")
+puts "#{Post.count} after "
+
 
 puts "Seed finsihed"
 puts "#{Post.count} posts created"
