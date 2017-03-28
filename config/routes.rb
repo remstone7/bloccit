@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :advertisements
+
   # instead of get 'posts/abc'
   resources :posts
 

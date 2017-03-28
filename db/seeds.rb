@@ -29,3 +29,13 @@ end
 puts "Seed finsihed"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+
+puts "#{Advertisement.count} before"
+5.times do
+  Advertisement.create!(
+    title: RandomData.random_word,
+    body: RandomData.random_sentence,
+    price: RandomData.random_integer
+  )
+end
+puts "#{Advertisement.count} after"
