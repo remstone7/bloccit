@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :questions
+
   # instead of get 'posts/abc'
   resources :posts
 
