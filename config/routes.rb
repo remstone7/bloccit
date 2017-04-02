@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   resources :questions
-
-  # instead of get 'posts/abc'
-  resources :posts
+  resources :topics do
+    resources :posts, except: [:index]
+  end
 
   # instead of get welcome/abc
   get 'about' => 'welcome#about'

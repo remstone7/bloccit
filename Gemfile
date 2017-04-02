@@ -17,6 +17,7 @@ source 'https://rubygems.org'
 # use rspect for testing
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'shoulda'
 end
 
 
