@@ -15,7 +15,6 @@ require 'random_data'
 end
 topics = Topic.all
 
-
 50.times do
   # ! raises error if there is problem w/ data
   Post.create!(
@@ -26,6 +25,14 @@ topics = Topic.all
   )
 end
 
+25.times do
+  SponsoredPost.create!(
+    topic: topics.sample,
+    title: RandomData.random_sentence,
+    body: RandomData.random_paragraph,
+    price: RandomData.random_number
+  )
+end
 posts = Post.all
 
 100.times do
@@ -36,11 +43,12 @@ posts = Post.all
   )
 end
 
+
 puts "Seed finsihed"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
-
+puts "#{SponsoredPost.count} sponsored posts created"
 50.times do
   Question.create!(
     title: RandomData.random_sentence,

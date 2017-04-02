@@ -28,4 +28,8 @@ module RandomData
   def self.random_boolean
     rand(0..1) == 1
   end
+
+  def self.random_number
+    rand(10..500)
+  end
 end
