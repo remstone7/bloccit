@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :sponsored_posts, except: [:index]
   end
 
+  resources :users, only: [:new, :create]
+
   # instead of get welcome/abc
   get 'about' => 'welcome#about'
 
