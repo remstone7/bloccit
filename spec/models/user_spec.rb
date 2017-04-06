@@ -37,4 +37,12 @@ RSpec.describe User, type: :model do
      end
 
    end
+
+   context "format user" do
+     let(:user_with_formated_name) {User.new(name: "remstone")}
+
+     it "should be an invalid name due to formating" do
+       expect(user_with_formated_name).to_not be_valid
+     end
+   end
 end

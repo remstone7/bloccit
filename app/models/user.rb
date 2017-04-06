@@ -1,6 +1,18 @@
 class User < ActiveRecord::Base
+
   # run inline callback before save
   before_save { self.email = email.downcase if email.present? }
+
+  before_save { self.name = self.name.split.map!{|a| a.capitalize}.join(' ') if self.name }
+    # or
+  # before_save :format_name
+  # def format_name
+  #   name = name.split(' ')
+  #   name.each { |a| a.capitalize!  }
+  #   name.join('')
+  # end
+
+
   # ensure name is present and follows min/max
   validates :name, length: { minimum: 1, maximum: 100, }, presence: true
   # when creting a new user, they have a password
