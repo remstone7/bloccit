@@ -21,6 +21,6 @@ class User < ActiveRecord::Base
   # ruby function add methods to set and authenticate against bcrypt password
   has_secure_password
 
-  enum role: [:member, :admin]
+  enum role: [:member, :admin, :moderator]
 
 end
