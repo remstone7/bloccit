@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   before_save { self.name = self.name.split.map!{|a| a.capitalize}.join(' ') if self.name }
 
-
+  before_save { self.role ||= :member }
 
   # ensure name is present and follows min/max
   validates :name, length: { minimum: 1, maximum: 100, }, presence: true
@@ -20,5 +20,7 @@ class User < ActiveRecord::Base
             length: { minimum: 3, maximum: 254 }
   # ruby function add methods to set and authenticate against bcrypt password
   has_secure_password
+
+  enum role: [:member, :admin]
 
 end
