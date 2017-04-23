@@ -76,7 +76,17 @@ RSpec.describe Post, type: :model do
         expect(post.rank).to eq (old_rank - 1)
       end
     end
-
+    context "#create_vote" do
+      before do
+        @new_post = topic.posts.create! { title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user }
+      end
+      it "adds up vote on create" do
+        expect(@new_post.up_votes).to eq 1
+      end
+      it "ties vote to current user" do
+        expect(@new_post.votes.where(user: user).count).to eq 1
+      end
+    end
 
   end
 end
