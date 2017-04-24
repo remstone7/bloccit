@@ -17,7 +17,7 @@ RSpec.describe Post, type: :model do
   it { is_expected.to have_many(:comments) }
   it { is_expected.to have_many(:votes) }
   it { is_expected.to have_many(:favorites) }
-  
+
   it { is_expected.to belong_to(:topic) }
   it { is_expected.to belong_to(:user) }
   # test post validates the presence of title,body,topic
@@ -77,7 +77,13 @@ RSpec.describe Post, type: :model do
         expect(post.rank).to eq (old_rank - 1)
       end
     end
-
-
+  end
+  describe '#create_favorite' do
+    before do
+      @new_post = topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)
+    end
+    it "automatically favorites the post" do
+      expect(@new_post.favorites.last).to_not be_nil
+    end
   end
 end
